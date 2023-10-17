@@ -1,5 +1,3 @@
-in vec2 pos
-
 layout (location = 0) in vec2 pos;
 
 void main()
