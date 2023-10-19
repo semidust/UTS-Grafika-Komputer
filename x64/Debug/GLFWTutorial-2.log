@@ -7,4 +7,7 @@ D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(226,34): warnin
 D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(234,76): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(235,74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(236,70): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+glew32s.lib(glew.obj) : warning LNK4099: PDB '' was not found with 'glew32s.lib(glew.obj)' or at ''; linking object as if no debug info
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   GLFWTutorial-2.vcxproj -> D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\x64\Debug\GLFWTutorial-2.exe
