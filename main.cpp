@@ -29,9 +29,9 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
     }
 }*/
 
-float velocitySecondPointer = -6;
+float velocitySecondPointer = -6.0;
 float velocityMinutePointer = -0.1;
-float velocityHourPointer = -0.00417;
+float velocityHourPointer = -0.0083333;
 
 float currentSecondPointer = 270.0f;
 float currentMinutePointer = 270.0f;
@@ -41,7 +41,7 @@ float currentTime = 0.0f;
 float lastTime = 0.0f;
 float deltaTime = 0.0f;
 
-float speedUp = 1.0f;
+float speedUp = 0.5f;
 
 float color1[] = { 0.0f, 0.0f, 1.0f, 1.0f };
 float color2[] = { 0.0f, 1.0f, 0.0f, 1.0f };
@@ -49,38 +49,76 @@ float color3[] = { 1.0f, 0.0f, 0.0f, 1.0f };
 
 unsigned int program;
 GLint color1Loc, color2Loc, color3Loc;
-
 // fungsi tombol
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
+    if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) {
+        float inputHour = 0.0f;
+        float inputMinute = 0.0f; 
+        float inputSecond = 0.0f;
+
+        std::cout << "Hour(s): ";
+        std::cin >> inputHour;
+
+        std::cout << "Minute(s) : ";
+        std::cin >> inputMinute;
+
+        std::cout << "Second(s) : ";
+        std::cin >> inputSecond;
+
+        float changedTime = (inputHour * 3600.0f) + (inputMinute * 60.0f) + (inputSecond * 1.0f);
+        std::cout << "Time: " << changedTime << std::endl;
+        glfwSetTime(changedTime);
+    }
+
     // mempercepat gerakan waktu
     if (key == GLFW_KEY_Q && action == GLFW_PRESS)
     {
-        speedUp = speedUp + 5.0f;
-        std::cout << "Current speed: " << speedUp << std::endl;
+        speedUp = speedUp + 1.0f;
+        std::cout << "Speed increased." << std::endl;
     }
 
     // reset kecepatan
     if (key == GLFW_KEY_R && action == GLFW_PRESS)
     {
-        if (speedUp > 1.0f) {
-            speedUp = 1.0f;
-            std::cout << "Speed is back to normal (Current Speed: " << speedUp << ")" << std::endl;
+        if (speedUp > 0.5f) {
+            speedUp = 0.5f;
+            std::cout << "Speed is back to normal." << std::endl;
         }
     }
 
+    // menambah jam
     if (key == GLFW_KEY_UP && action == GLFW_PRESS)
     {
-        currentMinutePointer += 0.004117;
-        if (currentMinutePointer >= 4.0 * 3.14159265359) {
-            currentMinutePointer -= 2.0 * 3.14159265359;
-        }
+        currentTime = currentTime + 3600.0f;
+        currentHourPointer = currentHourPointer + ((currentTime - lastTime) * velocityHourPointer * speedUp);
+    }
+
+    // mengurangi jam
+    if (key == GLFW_KEY_DOWN && action == GLFW_PRESS)
+    {
+        currentTime = currentTime - 3600.0f;
+        currentHourPointer = currentHourPointer + ((currentTime - lastTime) * velocityHourPointer * speedUp);
+    }
+
+    // menambah menit
+    if (key == GLFW_KEY_RIGHT && action == GLFW_PRESS)
+    {
+        currentTime = currentTime + 60.0f;
+        currentMinutePointer = currentMinutePointer + ((currentTime - lastTime) * velocityMinutePointer * speedUp);
+    }
+
+    // mengurangi menit
+    if (key == GLFW_KEY_LEFT && action == GLFW_PRESS)
+    {
+        currentTime = currentTime - 60.0f;
+        currentMinutePointer = currentMinutePointer + ((currentTime - lastTime) * velocityMinutePointer * speedUp);
     }
 
     //warna acak
     if (key == GLFW_KEY_C && action == GLFW_PRESS)
     {
-        std::cout << "C is pressed" << std::endl;
+        std::cout << "Color changed." << std::endl;
         for (int i = 0; i < 4; i++)
         {
             color1[i] = (rand() * 1.0f) / RAND_MAX;
@@ -92,6 +130,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
         glUniform4f(color2Loc, color2[0], color2[1], color2[2], color2[3]);
         glUniform4f(color3Loc, color3[0], color3[1], color3[2], color3[3]);
     }
+
 }
 
 int main(void)

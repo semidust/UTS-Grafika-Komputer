@@ -1,10 +1,10 @@
 ﻿  main.cpp
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(1,1): warning C4005: 'GLEW_STATIC': macro redefinition
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(1,1): message : 'GLEW_STATIC' previously declared on the command line
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(33,29): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(34,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(145,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(153,76): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(154,74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(155,69): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  GLFWTutorial-2.vcxproj -> D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\x64\Debug\GLFWTutorial-2.exe
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(1,1): warning C4005: 'GLEW_STATIC': macro redefinition
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(1,1): message : 'GLEW_STATIC' previously declared on the command line
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(33,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(34,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(226,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(234,76): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(235,74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(236,70): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  GLFWTutorial-2.vcxproj -> D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\x64\Debug\GLFWTutorial-2.exe
