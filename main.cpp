@@ -30,7 +30,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }*/
 
 float velocitySecondPointer = -6;
-float velocityMinutePointer = -1;
+float velocityMinutePointer = -0.1;
 float velocityHourPointer = -0.00417;
 
 float currentSecondPointer = 270.0f;
@@ -42,6 +42,25 @@ float lastTime = 0.0f;
 float deltaTime = 0.0f;
 
 float speedUp = 4.0f;
+
+// fungsi tombol
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    // mempercepat gerakan waktu
+    if (key == GLFW_KEY_Q && action == GLFW_PRESS)
+    {
+        speedUp = speedUp + 5.0f;
+        std::cout << "Current speed: " << speedUp << std::endl;
+    }
+
+    // reset kecepatan
+    if (key == GLFW_KEY_R && action == GLFW_PRESS)
+    {
+        speedUp = 4.0f;
+        std::cout << "Speed is back to normal (" << speedUp << ")" << std::endl;
+
+    }
+}
 
 int main(void)
 {
@@ -61,6 +80,8 @@ int main(void)
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+    glfwSetKeyCallback(window, keyCallback);
 
     GLenum err = glewInit();
 
