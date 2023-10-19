@@ -43,6 +43,13 @@ float deltaTime = 0.0f;
 
 float speedUp = 1.0f;
 
+float color1[] = { 0.0f, 0.0f, 1.0f, 1.0f };
+float color2[] = { 0.0f, 1.0f, 0.0f, 1.0f };
+float color3[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+
+unsigned int program;
+GLint color1Loc, color2Loc, color3Loc;
+
 // fungsi tombol
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -70,6 +77,21 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
         }
     }
 
+    //warna acak
+    if (key == GLFW_KEY_C && action == GLFW_PRESS)
+    {
+        std::cout << "C is pressed" << std::endl;
+        for (int i = 0; i < 4; i++)
+        {
+            color1[i] = (rand() * 1.0f) / RAND_MAX;
+            color2[i] = (rand() * 1.0f) / RAND_MAX;
+            color3[i] = (rand() * 1.0f) / RAND_MAX;
+        }
+
+        glUniform4f(color1Loc, color1[0], color1[1], color1[2], color1[3]);
+        glUniform4f(color2Loc, color2[0], color2[1], color2[2], color2[3]);
+        glUniform4f(color3Loc, color3[0], color3[1], color3[2], color3[3]);
+    }
 }
 
 int main(void)
@@ -144,10 +166,20 @@ int main(void)
     glAttachShader(program, fragmentShader);
 
     glLinkProgram(program);
+    glUseProgram(program);
 
     GLint currentSecondPointerLoc = glGetUniformLocation(program, "currentSecondPointer");
     GLint currentMinutePointerLoc = glGetUniformLocation(program, "currentMinutePointer");
     GLint currentHourPointerLoc = glGetUniformLocation(program, "currentHourPointer");
+
+    color1Loc = glGetUniformLocation(program, "color1");
+    glUniform4f(color1Loc, color1[0], color1[1], color1[2], color1[3]);
+
+    color2Loc = glGetUniformLocation(program, "color2");
+    glUniform4f(color2Loc, color2[0], color2[1], color2[2], color2[3]);
+
+    color3Loc = glGetUniformLocation(program, "color3");
+    glUniform4f(color3Loc, color3[0], color3[1], color3[2], color3[3]);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -162,7 +194,7 @@ int main(void)
 
         glUniform1f(currentSecondPointerLoc, (currentSecondPointer * 3.14) / 180.0f);
         glUniform1f(currentMinutePointerLoc, currentMinutePointer * 3.14 / 180.0f);
-        glUniform1f(currentHourPointerLoc, currentHourPointer * 3.14/ 180.0f);
+        glUniform1f(currentHourPointerLoc, currentHourPointer * 3.14 / 180.0f);
 
 
         /* Render here */
