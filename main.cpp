@@ -33,15 +33,15 @@ float velocitySecondPointer = -6;
 float velocityMinutePointer = -0.1;
 float velocityHourPointer = -0.00417;
 
-float currentSecondPointer = 270.0f;
-float currentMinutePointer = 270.0f;
-float currentHourPointer = 270.0f;
+float currentSecondPointer = 90.0f;
+float currentMinutePointer = 90.0f;
+float currentHourPointer = 90.0f;
 
 float currentTime = 0.0f;
 float lastTime = 0.0f;
 float deltaTime = 0.0f;
 
-float speedUp = 4.0f;
+float speedUp = 1.0f;
 
 // fungsi tombol
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -151,9 +151,9 @@ int main(void)
         currentMinutePointer = currentMinutePointer + (deltaTime * velocityMinutePointer);
         currentHourPointer = currentHourPointer + (deltaTime * velocityHourPointer);
 
-        glUniform1f(currentSecondPointerLoc, currentSecondPointer / 180.0f);
-        glUniform1f(currentMinutePointerLoc, currentMinutePointer / 180.0f);
-        glUniform1f(currentHourPointerLoc, currentHourPointer / 180.0f);
+        glUniform1f(currentSecondPointerLoc, (currentSecondPointer * 3.14) / 180.0f);
+        glUniform1f(currentMinutePointerLoc, currentMinutePointer * 3.14 / 180.0f);
+        glUniform1f(currentHourPointerLoc, currentHourPointer * 3.14/ 180.0f);
 
 
         /* Render here */
