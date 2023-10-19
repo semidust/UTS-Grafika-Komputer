@@ -56,10 +56,20 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
     // reset kecepatan
     if (key == GLFW_KEY_R && action == GLFW_PRESS)
     {
-        speedUp = 4.0f;
-        std::cout << "Speed is back to normal (" << speedUp << ")" << std::endl;
-
+        if (speedUp > 1.0f) {
+            speedUp = 1.0f;
+            std::cout << "Speed is back to normal (Current Speed: " << speedUp << ")" << std::endl;
+        }
     }
+
+    if (key == GLFW_KEY_UP && action == GLFW_PRESS)
+    {
+        currentMinutePointer += 0.004117;
+        if (currentMinutePointer >= 4.0 * 3.14159265359) {
+            currentMinutePointer -= 2.0 * 3.14159265359;
+        }
+    }
+
 }
 
 int main(void)
