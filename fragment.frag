@@ -2,10 +2,6 @@ uniform float currentSecondPointer;
 uniform float currentMinutePointer;
 uniform float currentHourPointer;
 
-uniform vec4 color1;
-uniform vec4 color2;
-uniform vec4 color3;
-
 layout (location = 0) out vec4 color;
 varying vec2 vPos;
 
@@ -27,11 +23,10 @@ void main()
 	}
 
 	// menit
-	float dotMinute = dot(normalize(vPos),  vec2(cos(currentMinutePointer), sin(currentMinutePointer)));
-	
-	if (distance <= 0.6 && dotMinute > 0.995)
+	float dotMinute = dot(normalize(vPos), vec2(0.6 * cos(currentMinutePointer), 0.6 * sin(currentMinutePointer)));
+	if (distance >= 0.5 && distance <= 0.6 && dotMinute < 0.6 * sin(currentMinutePointer))
 	{
-		color = vec4(0.0, 1.0, 0.0, 1.0);
+		color = vec4(0.0, 1.0, 0.0, 1.0);;
 	}
 
 	// jam

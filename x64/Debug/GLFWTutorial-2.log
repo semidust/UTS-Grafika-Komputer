@@ -3,11 +3,8 @@ D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(1,1): warning C4005: 'GLEW_STATI
 D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(1,1): message : 'GLEW_STATIC' previously declared on the command line
 D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(33,29): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(34,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(160,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(168,76): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(169,74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(170,69): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-glew32s.lib(glew.obj) : warning LNK4099: PDB '' was not found with 'glew32s.lib(glew.obj)' or at ''; linking object as if no debug info
-LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(145,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(153,76): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(154,74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\main.cpp(155,69): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
   GLFWTutorial-2.vcxproj -> D:\kuliah\sem 5\Lab GK\OpenGL-Tutorial\x64\Debug\GLFWTutorial-2.exe
