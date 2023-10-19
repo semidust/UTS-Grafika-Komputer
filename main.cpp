@@ -1,13 +1,14 @@
+#define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <math.h>
 #include "util.h"
 
-float color1[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+/*float color1[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 float color2[] = { 1.0f, 0.0f, 0.0f, 1.0f };
 
-/*unsigned int program;
+unsigned int program;
 GLint color1Loc, color2Loc;
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -27,6 +28,20 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
         glUniform4f(color2Loc, color2[0], color2[1], color2[2], color2[3]);
     }
 }*/
+
+float velocitySecondPointer = -6;
+float velocityMinutePointer = -1;
+float velocityHourPointer = -0.00417;
+
+float currentSecondPointer = 270.0f;
+float currentMinutePointer = 270.0f;
+float currentHourPointer = 270.0f;
+
+float currentTime = 0.0f;
+float lastTime = 0.0f;
+float deltaTime = 0.0f;
+
+float speedUp = 4.0f;
 
 int main(void)
 {
@@ -51,10 +66,10 @@ int main(void)
 
     // data yg dikirim ke GPU
     float vertices[] = {
-       1.0, 1.0,
-       -1.0, 1.0,
-       -1.0, -1.0,
-       1.0, -1.0
+        1.0, 1.0,
+        -1.0, 1.0,
+        -1.0, -1.0,
+        1.0, -1.0
     };
 
     unsigned indexArr[] = {
@@ -75,8 +90,8 @@ int main(void)
 
     // instruksi ke GPU
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); // index, brp dimensi (2d), tipe data, normalized, jarak antar vertex, pada index keberapa dimulai)
 
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); // index, brp dimensi (2d), tipe data, normalized, jarak antar vertex, pada index keberapa dimulai)
 
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -99,20 +114,34 @@ int main(void)
 
     glLinkProgram(program);
 
-    /*GLint scaleLoc = glGetUniformLocation(program, "scale");
-    glProgramUniform1f(program, scaleLoc, 0.5f);*/
+    GLint currentSecondPointerLoc = glGetUniformLocation(program, "currentSecondPointer");
+    GLint currentMinutePointerLoc = glGetUniformLocation(program, "currentMinutePointer");
+    GLint currentHourPointerLoc = glGetUniformLocation(program, "currentHourPointer");
 
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
+        currentTime = glfwGetTime();
+        deltaTime = (currentTime - lastTime) * speedUp;
+        lastTime = currentTime;
+
+        currentSecondPointer = currentSecondPointer + (deltaTime * velocitySecondPointer);
+        currentMinutePointer = currentMinutePointer + (deltaTime * velocityMinutePointer);
+        currentHourPointer = currentHourPointer + (deltaTime * velocityHourPointer);
+
+        glUniform1f(currentSecondPointerLoc, currentSecondPointer / 180.0f);
+        glUniform1f(currentMinutePointerLoc, currentMinutePointer / 180.0f);
+        glUniform1f(currentHourPointerLoc, currentHourPointer / 180.0f);
+
+
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(program);
         //glDrawArrays(GL_TRIANGLES, 0, 6); // ada 3 vertex
-
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+
         /*
         glBegin(GL_TRIANGLES);
         glVertex2f(0.0f, 0.5f);
