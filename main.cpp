@@ -33,7 +33,7 @@ float velocitySecondPointer = -6;
 float velocityMinutePointer = -0.1;
 float velocityHourPointer = -0.00417;
 
-float currentSecondPointer = 90.0f;
+float currentSecondPointer = 270.0f;
 float currentMinutePointer = 90.0f;
 float currentHourPointer = 90.0f;
 
@@ -42,6 +42,12 @@ float lastTime = 0.0f;
 float deltaTime = 0.0f;
 
 float speedUp = 1.0f;
+
+GLint color1Loc, color2Loc, color3Loc;
+
+float color1[] = { 1.0, 0.0, 0.0, 1.0 };
+float color2[] = { 0.0, 1.0, 0.0, 1.0 };
+float color3[] = { 0.0, 0.0, 1.0, 1.0 };
 
 // fungsi tombol
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -139,6 +145,14 @@ int main(void)
     GLint currentMinutePointerLoc = glGetUniformLocation(program, "currentMinutePointer");
     GLint currentHourPointerLoc = glGetUniformLocation(program, "currentHourPointer");
 
+    color1Loc = glGetUniformLocation(program, "color1");
+    glUniform4f(color1Loc, color1[0], color1[1], color1[2], color1[3]);
+
+    color2Loc = glGetUniformLocation(program, "color2");
+    glUniform4f(color2Loc, color2[0], color2[1], color2[2], color2[3]);
+
+    color3Loc = glGetUniformLocation(program, "color3");
+    glUniform4f(color3Loc, color3[0], color3[1], color3[2], color3[3]);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
