@@ -5,30 +5,6 @@
 #include <math.h>
 #include "util.h"
 
-/*float color1[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-float color2[] = { 1.0f, 0.0f, 0.0f, 1.0f };
-
-unsigned int program;
-GLint color1Loc, color2Loc;
-
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-    if (key == GLFW_KEY_C && action == GLFW_PRESS)
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            color1[i] = (rand() * 1.0f) / RAND_MAX;
-            color2[i] = (rand() * 1.0f) / RAND_MAX;
-        }
-
-        std::cout << color1[0] << " " << color1[1] << " " << color1[2] << " " << color1[3] << std::endl;
-        std::cout << color2[0] << " " << color2[1] << " " << color2[2] << " " << color2[3] << std::endl;
-
-        glUniform4f(color1Loc, color1[0], color1[1], color1[2], color1[3]);
-        glUniform4f(color2Loc, color2[0], color2[1], color2[2], color2[3]);
-    }
-}*/
-
 float velocitySecondPointer = -6.0;
 float velocityMinutePointer = -0.1;
 float velocityHourPointer = -0.0083333;
@@ -47,28 +23,35 @@ float color1[] = { 0.0f, 0.0f, 1.0f, 1.0f };
 float color2[] = { 0.0f, 1.0f, 0.0f, 1.0f };
 float color3[] = { 1.0f, 0.0f, 0.0f, 1.0f };
 
-unsigned int program;
+bool executed = false;
 GLint color1Loc, color2Loc, color3Loc;
+
 // fungsi tombol
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (key == GLFW_KEY_SPACE && action == GLFW_PRESS) {
-        float inputHour = 0.0f;
-        float inputMinute = 0.0f; 
-        float inputSecond = 0.0f;
+        if (executed == false) { // kondisi if agar input hanya bisa dilakukan sekali saja selama program berjalan
+            float inputHour = 0.0f;
+            float inputMinute = 0.0f;
+            float inputSecond = 0.0f;
 
-        std::cout << "Hour(s): ";
-        std::cin >> inputHour;
+            std::cout << "Hour(s): ";
+            std::cin >> inputHour;
 
-        std::cout << "Minute(s) : ";
-        std::cin >> inputMinute;
+            std::cout << "Minute(s) : ";
+            std::cin >> inputMinute;
 
-        std::cout << "Second(s) : ";
-        std::cin >> inputSecond;
+            std::cout << "Second(s) : ";
+            std::cin >> inputSecond;
 
-        float changedTime = (inputHour * 3600.0f) + (inputMinute * 60.0f) + (inputSecond * 1.0f);
-        std::cout << "Time: " << changedTime << std::endl;
-        glfwSetTime(changedTime);
+            currentTime = currentTime + (inputHour * 3600.0f) + (inputMinute * 60.0f) + (inputSecond * 1.0f);
+            glfwSetTime(currentTime);
+
+            executed = true; // nilai executed menjadi true, sehingga jika tombol ditekan lagi akan menjalankan blok kode dalam else di bawah
+        }
+        else {
+            cout << "The time can only be changed once.";
+        }
     }
 
     // mempercepat gerakan waktu
@@ -231,7 +214,7 @@ int main(void)
         currentMinutePointer = currentMinutePointer + (deltaTime * velocityMinutePointer);
         currentHourPointer = currentHourPointer + (deltaTime * velocityHourPointer);
 
-        glUniform1f(currentSecondPointerLoc, (currentSecondPointer * 3.14) / 180.0f);
+        glUniform1f(currentSecondPointerLoc, currentSecondPointer * 3.14 / 180.0f);
         glUniform1f(currentMinutePointerLoc, currentMinutePointer * 3.14 / 180.0f);
         glUniform1f(currentHourPointerLoc, currentHourPointer * 3.14 / 180.0f);
 
