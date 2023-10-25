@@ -3,10 +3,11 @@ D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(1,1): warning C
 D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(1,1): message : 'GLEW_STATIC' previously declared on the command line
 D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(9,29): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(10,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(210,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(209,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(217,74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(218,74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(219,74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(220,70): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\main.cpp(219,70): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  LINK : D:\kuliah\sem 5\grafika komputer\github\OpenGL-Tutorial\x64\Debug\GLFWTutorial-2.exe not found or not built by the last incremental link; performing full link
 glew32s.lib(glew.obj) : warning LNK4099: PDB '' was not found with 'glew32s.lib(glew.obj)' or at ''; linking object as if no debug info
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
